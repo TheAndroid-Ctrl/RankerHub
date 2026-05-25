@@ -13,9 +13,7 @@ import {
   Search,
   Sparkles,
   ArrowRight,
-  TrendingUp,
-  Mail,
-  Link as LinkIcon
+  TrendingUp
 } from "lucide-react";
 import { Linkedin, Instagram } from "../components/ui/Icons";
 import {
@@ -71,14 +69,50 @@ export const Onboarding = () => {
 
   const dropdownRef = useRef(null);
 
+<<<<<<< feature/homepage-ui-improvements
+=======
+  // Prefill name from GitHub when session is loaded
+  useEffect(() => {
+    if (userData && userData.name) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setName(userData.name);
+    } else if (user && user.displayName) {
+      setName(user.displayName);
+    }
+  }, [user, userData]);
+
+>>>>>>> main
   // Prefill referral code from session storage (URL parse cache)
   useEffect(() => {
     const savedRef = sessionStorage.getItem("referred_by_code");
     if (savedRef) {
+<<<<<<< feature/homepage-ui-improvements
+=======
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setReferralCode(savedRef);
+      // Clean up after prefilling once
+>>>>>>> main
       sessionStorage.removeItem("referred_by_code");
     }
   }, []);
 
+<<<<<<< feature/homepage-ui-improvements
+=======
+  // Handle college typing search filter
+  useEffect(() => {
+    if (collegeSearch.trim() === "") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setFilteredColleges(collegesList);
+    } else {
+      const searchLower = collegeSearch.toLowerCase();
+      const filtered = collegesList.filter((col) =>
+        col.toLowerCase().includes(searchLower)
+      );
+      setFilteredColleges(filtered);
+    }
+  }, [collegeSearch]);
+
+>>>>>>> main
   // Click outside to close dropdown
   useEffect(() => {
     const handleClickOutside = (event) => {
